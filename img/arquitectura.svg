@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="820" viewBox="0 0 1100 820">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#475569"/></marker></defs>
+<rect width="1100" height="820" fill="#f8fafc"/>
+<g font-family="Arial, sans-serif" fill="#172554">
+<text x="40" y="42" font-size="26" font-weight="bold">Librería Tinta · Arquitectura en AWS</text>
+<text x="40" y="70" font-size="16">Norte de Virginia (us-east-1) · Amazon Linux 2023 · Nginx</text>
+<rect x="45" y="100" width="245" height="75" rx="12" fill="#dbeafe" stroke="#2563eb"/>
+<text x="65" y="130" font-size="18" font-weight="bold">Internet / navegador</text><text x="65" y="155" font-size="15">HTTP 80 · SSH 22 desde mi IP</text>
+<rect x="345" y="100" width="260" height="75" rx="12" fill="#ffedd5" stroke="#ea580c"/>
+<text x="365" y="130" font-size="18" font-weight="bold">libreria-igw</text><text x="365" y="155" font-size="15">Gateway de internet</text>
+<path d="M290 137 H345" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="205" width="1020" height="560" rx="15" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="60" y="235" font-size="20" font-weight="bold">VPC libreria-vpc · 10.0.0.0/16</text>
+<text x="60" y="260" font-size="15">Resolución DNS y nombres de host DNS habilitados</text>
+<rect x="65" y="285" width="510" height="76" rx="8" fill="white" stroke="#64748b"/>
+<text x="85" y="313" font-size="18" font-weight="bold">Tabla libreria-rt-publica</text>
+<text x="85" y="339" font-size="15">10.0.0.0/16 → local    |    0.0.0.0/0 → libreria-igw</text>
+<path d="M475 175 V285" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="65" y="390" width="970" height="350" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="85" y="420" font-size="19" font-weight="bold">Subred libreria-publica · 10.0.1.0/24 · us-east-1a</text>
+<path d="M320 361 V390" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="85" y="445" width="580" height="260" rx="10" fill="#fff7ed" stroke="#ea580c"/>
+<text x="105" y="473" font-size="18" font-weight="bold">Grupo de seguridad libreria-web-sg</text>
+<text x="105" y="499" font-size="15">HTTP 80: 0.0.0.0/0 · SSH 22: mi IP/32</text>
+<rect x="105" y="555" width="250" height="120" rx="8" fill="white" stroke="#ea580c"/>
+<text x="120" y="583" font-size="18" font-weight="bold">EC2 libreria-web</text><text x="120" y="608" font-size="15">10.0.1.187 · peso 80</text><text x="120" y="633" font-size="15">t3.micro · web versión 1</text><text x="120" y="656" font-size="15">user-data1.sh</text>
+<rect x="385" y="555" width="255" height="120" rx="8" fill="white" stroke="#ea580c"/>
+<text x="400" y="583" font-size="18" font-weight="bold">EC2 libreria-web2</text><text x="400" y="608" font-size="15">10.0.1.224 · peso 20</text><text x="400" y="633" font-size="15">t3.micro · web versión 2</text><text x="400" y="656" font-size="15">user-data2.sh</text>
+<rect x="690" y="445" width="320" height="260" rx="10" fill="#f5f3ff" stroke="#7c3aed"/>
+<text x="710" y="475" font-size="18" font-weight="bold">Grupo libreria-web-cli-sg</text><text x="710" y="501" font-size="15">HTTP 80 público · SSH mi IP/32</text>
+<text x="710" y="554" font-size="18" font-weight="bold">EC2 libreria-web-cli</text><text x="710" y="583" font-size="15">10.0.1.28 · t3.micro</text><text x="710" y="609" font-size="15">Creado con desplegar.sh</text><text x="710" y="635" font-size="15">Usa user-data1.sh</text><text x="710" y="664" font-size="15">Fuera del reparto DNS</text>
+<rect x="630" y="95" width="415" height="240" rx="12" fill="#f3e8ff" stroke="#9333ea"/>
+<text x="650" y="125" font-size="20" font-weight="bold">Route 53 · Zona privada libreria.lab</text>
+<text x="650" y="155" font-size="16">Asociada a libreria-vpc</text><text x="650" y="190" font-size="18" font-weight="bold">web.libreria.lab</text>
+<text x="650" y="220" font-size="16">A → 10.0.1.187 · peso 80 · TTL 10 s</text><text x="650" y="248" font-size="16">A → 10.0.1.224 · peso 20 · TTL 10 s</text><text x="650" y="284" font-size="15">Resolución y pruebas desde dentro de la VPC</text><text x="650" y="310" font-size="15">No es un nombre público de internet</text>
+<text x="45" y="798" font-size="15">Las IP privadas reflejan las pruebas realizadas. Cada servidor tiene acceso web mediante su IPv4 pública.</text>
+</g></svg>
